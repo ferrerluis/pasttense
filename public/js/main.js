@@ -27,6 +27,10 @@ function setClickListener(selector) {
     });
 }
 
+function getAllMessages(callback){
+	$.get("/start", callback);
+}
+
 $(function(){ //DOM Ready
 
     var socket = io();
