@@ -9,10 +9,11 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
 });
 
-io.on('connection', function(socket){
-	console.log("user connected");    
+io.on('connection', function(socket){    
+    io.emit('new user', 'user connected');
+     
     socket.on('new msg', function(msg){
-        console.log('message: ' + msg);
+        io.emit('new msg', msg);
     });
 });
 
