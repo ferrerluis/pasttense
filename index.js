@@ -56,7 +56,11 @@ app.get("/", function(req, res){
 			req.models.messages.find(messageId, function(err, message){
 				message.likes += 1;
 				message.save(function(err) {
-					socket.emit("like-success", messageId);
+					if(err){
+						socket.emit("like-fail", err);
+					}else{
+						socket.emit("like-success", messageId);	
+					}
 				});
 			});
 		});
