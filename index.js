@@ -16,6 +16,12 @@ app.use(orm.express("sqlite://database.db", {
 			"contentType": String,
 			"content": String,
 			"destinationTime": Number
+		 }, {
+			 methods: {
+				 "get": function(){
+					 return this.content;
+				 }
+			 }
 		 });
     }
 }));
@@ -89,7 +95,7 @@ app.get("/", function(req, res){
 					if(err){
 						socket.emit("forward-fail", err);
 					}else{
-						socket.emit("forward-success", m);
+						socket.emit("forward-success", m.content);
 					}
 				});
 			});
@@ -100,7 +106,11 @@ app.get("/", function(req, res){
 app.get("/start", function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	req.models.messages.find(function(err, messages) {
-		res.send(JSON.stringify(messages));
+		var m = [];
+		for(var i = 0; i < messages.length; i++){
+			m.push(messages[i].content);
+		}
+		res.send(JSON.stringify(m));
 	});
 });
 
