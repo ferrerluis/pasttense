@@ -4,6 +4,8 @@ var http = require("http").Server(app);
 var io = require('socket.io')(http);
 var orm = require('orm');
 
+app.use(express.static('public'));
+
 app.use(orm.express("sqlite://database.db", {
     define: function (db, models) {
         models.messages = db.define("messages", {
@@ -18,7 +20,9 @@ app.use(orm.express("sqlite://database.db", {
     }
 }));
 
-app.use(express.static('public'));
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 
 app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
@@ -29,7 +33,7 @@ app.get("/", function(req, res){
 			|| !msg.hasOwnProperty("toNumber") 
 			|| !msg.hasOwnProperty("contentType") 
 			|| !msg.hasOwnProperty("content")
-			|| !msg.hasOwnProperty("time")){
+			|| !msg.hasOwnProperty("time")) {
 				// something went wrong
 				socket.emit("message-create-fail", {"error": "missing a field"});
 				return;
@@ -121,3 +125,4 @@ app.get("/create", function(req, res) {
 });
 
 app.listen(3000);
+console.log("Starting on port 3000");
