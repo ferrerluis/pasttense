@@ -16,6 +16,10 @@ function urlify(text) {
     });
 }
 
+function getAllMessages(callback){
+	$.get("/start", callback);
+}
+
 $(function(){ //DOM Ready
 
     var gridster = $(".gridster ul").gridster({
@@ -44,5 +48,5 @@ $(function(){ //DOM Ready
         var display = urlify(msg);
         
         gridster.add_widget('<li class="message-card">' + display + '</li>', 2, 1, 1, 1);
-});
+	});
 });
