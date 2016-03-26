@@ -79,9 +79,8 @@ li.message-card img {
     height: auto;
 }
 
-.expandable-modal {
+.expandable-modal .sweet-content {
     
-    height: auto;
     text-align: left;
 }
 
