@@ -5,26 +5,44 @@
 
 body{
     background-color: #2D3047;
-    color: black;
+    color: #F79F79;
 }
 
-.toolbar {
-    width: auto;
-    height: 150px;
-    margin: auto;
+#toolbar {
     background-color: #FFDBB5;
+    display:flex;
 }
 
-.logo {
-    position: left;
+#logo {
+    background: #87B6A7;        
     height: 100px;
-    width: 100px;
+    /*width: 100px;*/
+    flex-grow: 1;
 }
 
-.messaging {
-    position: right;
+#messaging {
+    background: #87B6A7;    
+    height: 100px;
+    /*width: 100px;*/
+    flex-grow: 2;
+}
+#options {
+    height: 100px;
+    background: #87B6A7;
+    flex-grow: 1;
 }
 
+.toolbar-item {
+    
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+#msg-field {
+    
+    display: block;
+    width: 95%;
+}
 #messages {
     
     padding: 0;
