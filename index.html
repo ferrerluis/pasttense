@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/style.css"/>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>PastTense</title>
 </head>
 <body>
-	
+
+ <div class="toolbar">
+          
+          <div class="logo">
+            <img src="images/logo.jpg" />
+          </div>
+          
+          <div class="messaging">	
+        <form action="">
+            <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
+            <button>Send</button>
+        </form>
+    </div>
+          
+          <div class="options">
+          </div>
+ </div>
+    
+    <h3>Announcements:</h3>
+    <div id="announcements"></div>
+    
+    <h3>Messages:</h3>
+    <div id="messages"></div>
+    
 	<script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script>
 		var socket = io();
+        
+        $('#msg-field').keypress(function(event){
+            if(event.keyCode == 13) {
+                $("form").submit();
+            }
+        });
+        
+        $('form').submit(function() {
+            socket.emit('new msg', $('#msg-field').val());
+            $('#msg-field').val('');
+            return false;
+        });
+        
+        socket.on('new user', function(msg) {
+             $('#announcements').append($('<div>').text(msg));
+        });
+        
+        socket.on('new msg', function(msg) {
+             $('#messages').append($('<div>').text(msg));
+        });
 	</script>
 </body>
 </html>

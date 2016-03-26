@@ -4,7 +4,12 @@
   "description": "my first socket.io app",
   "dependencies": {
     "express": "^4.13.4",
+<<<<<<< HEAD
     "socket.io": "^1.4.5",
     "sqlite3": "^3.1.2"
+=======
+    "jquery": "^2.2.2",
+    "socket.io": "^1.4.5"
+>>>>>>> 369f68e26c2c0981bdf667612cdb151ed97b3bb1
   }
 }
