@@ -1,0 +1,23 @@
+body{
+    background-color: #2D3047;
+    color: black;
+}
+
+.toolbar {
+    width: auto;
+    height: 150px;
+    margin: auto;
+    background-color: #FFDBB5;
+}
+
+.logo {
+    position: left;
+    height: 100px;
+    width: 100px;
+}
+
+.messaging {
+    position: right;
+}
+
+
