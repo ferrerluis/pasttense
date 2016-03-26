@@ -6,9 +6,20 @@
 </head>
 <body>
 	
+    <form action="">
+        <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
+        <button>Send</button>
+    </form>
+    
 	<script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script>
 		var socket = io();
+        $('form').submit(function() {
+            socket.emit('new msg', $('#msg-field').val());
+            $('#msg-field').val('');
+            return false;
+        });
 	</script>
 </body>
 </html>
