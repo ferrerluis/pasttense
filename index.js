@@ -37,15 +37,16 @@ io.on('connection', function(socket){
 		|| !msg.hasOwnProperty("contentType") 
 		|| !msg.hasOwnProperty("content")){
 			// something went wrong
+			return;
 		}
 		
 		req.models.messages.create([{
 			"private": msg.private,
-			"toNumber": msg.private,
-			"fromNumber": msg.private,
+			"toNumber": msg.toNumber,
+			"fromNumber": msg.fromNumber || null,
 			"likes": 0,
-			"contentType": msg.private,
-			"content": msg.private,
+			"contentType": msg.contentType,
+			"content": msg.content,
 		}], function(err, items) {
 			// if(!err){
 			// 	res.send(JSON.stringify(items));	

@@ -18,7 +18,7 @@ function urlify(text) {
 
 function getAllMessages(callback){
 	$.get("/start", callback);
-}
+}	
 
 $(function(){ //DOM Ready
 
