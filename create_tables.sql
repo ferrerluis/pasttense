@@ -5,5 +5,6 @@ create table messages(
 	fromNumber int,	
 	likes int not null default 0,
 	contentType varchar(30) not null,
-	content text not null
+	content text not null,
+	destinationTime integer
 );
