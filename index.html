@@ -27,9 +27,9 @@
     
     <div class="gridster">
         <ul id="messages">
-            <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">Some</li>
-            <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">Info</li>
-            <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">Here</li>         
+            <li class="message-card" data-row="1" data-col="1" data-sizex="2" data-sizey="1">Some</li>
+            <li class="message-card" data-row="1" data-col="1" data-sizex="2" data-sizey="1">Info</li>
+            <li class="message-card" data-row="1" data-col="1" data-sizex="2" data-sizey="1">Here</li>         
         </ul>
     </div>
     
@@ -37,24 +37,5 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/jquery.gridster.min.js"></script>
     <script src="js/main.js"></script>
-	<script>
-		var socket = io();
-        
-        $('#msg-field').keypress(function(event){
-            if(event.keyCode == 13) {
-                $("form").submit();
-            }
-        });
-        
-        $('form').submit(function() {
-            socket.emit('new msg', $('#msg-field').val());
-            $('#msg-field').val('');
-            return false;
-        });
-        
-        socket.on('new msg', function(msg) {
-            gridster.add_widget('<li class="new">' + msg + '</li>', 2, 1);
-        });
-	</script>
 </body>
 </html>

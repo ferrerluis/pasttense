@@ -30,7 +30,16 @@ body{
     padding: 0;
 }
 
-li {
+li.message-card {
+    
+    padding: 0.5rem;
+    overflow: hidden;
     background-color: #FFF;
     list-style-type: none;
+}
+
+li.message-card img {
+    
+    width: 100%;
+    height: auto;
 }
