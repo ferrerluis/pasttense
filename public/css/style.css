@@ -24,3 +24,13 @@ body{
 .messaging {
     position: right;
 }
+
+#messages {
+    
+    padding: 0;
+}
+
+li {
+    background-color: #FFF;
+    list-style-type: none;
+}

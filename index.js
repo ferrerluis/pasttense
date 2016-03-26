@@ -9,9 +9,8 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
 });
 
-io.on('connection', function(socket){    
-    io.emit('new user', 'user connected');
-     
+io.on('connection', function(socket){
+    console.log('new user');
     socket.on('new msg', function(msg){
         io.emit('new msg', msg);
     });

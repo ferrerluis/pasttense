@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style.css"/>
 	<meta charset="UTF-8">
 	<title>PastTense</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/jquery.gridster.min.css"/>
 </head>
 <body>
 
  <div class="toolbar">
           
-          <div class="logo">
+          <!-- <div class="logo">
             <img src="images/logo.jpg" />
-          </div>
+          </div> -->
           
           <div class="messaging">	
         <form action="">
@@ -24,14 +25,18 @@
           </div>
  </div>
     
-    <h3>Announcements:</h3>
-    <div id="announcements"></div>
-    
-    <h3>Messages:</h3>
-    <div id="messages"></div>
+    <div class="gridster">
+        <ul id="messages">
+            <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">Some</li>
+            <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">Info</li>
+            <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">Here</li>         
+        </ul>
+    </div>
     
 	<script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="js/jquery.gridster.min.js"></script>
+    <script src="js/main.js"></script>
 	<script>
 		var socket = io();
         
@@ -47,12 +52,8 @@
             return false;
         });
         
-        socket.on('new user', function(msg) {
-             $('#announcements').append($('<div>').text(msg));
-        });
-        
         socket.on('new msg', function(msg) {
-             $('#messages').append($('<div>').text(msg));
+            gridster.add_widget('<li class="new">' + msg + '</li>', 2, 1);
         });
 	</script>
 </body>
