@@ -1,51 +1,68 @@
-#announcements {
-    
-    color: red;
-}
-
 body{
     background-color: #2D3047;
-    color: #F79F79;
+    color: #000;
 }
 
 #toolbar {
-    background-color: #FFDBB5;
-    display:flex;
-}
-
-#logo {
-    background: #87B6A7;        
-    height: 100px;
-    /*width: 100px;*/
-    flex-grow: 1;
-}
-
-#messaging {
-    background: #87B6A7;    
-    height: 100px;
-    /*width: 100px;*/
-    flex-grow: 2;
-}
-#options {
-    height: 100px;
-    background: #87B6A7;
-    flex-grow: 1;
+    height: 10rem;
+    display: flex;
+    padding: 15px;
 }
 
 .toolbar-item {
     
-    margin: 0.5rem;
+    max-height: 100%;
+    background: #87B6A7;
+    margin: 0 0.5rem;
     padding: 0.5rem;
+}
+
+.toolbar-item:first-of-type {
+    
+    margin-left: 0;
+}
+
+.toolbar-item:last-of-type {
+    
+    margin-right: 0;
+}
+
+#logo {
+    flex-grow: 1;
+}
+
+#messaging {
+    flex-grow: 2;
+}
+
+#messaging>div {
+    
+    margin: auto;
+    width: 95%;
+}
+
+#options {
+    flex-grow: 1;
 }
 
 #msg-field {
     
     display: block;
-    width: 95%;
+    width: 100%;
+    height: 50%;
 }
+
 #messages {
     
     padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.gridster {
+    
+    width: 100%;
+    padding: auto 0;
 }
 
 li.message-card {
@@ -60,4 +77,18 @@ li.message-card img {
     
     width: 100%;
     height: auto;
+}
+
+.expandable-modal {
+    
+    height: auto;
+    text-align: left;
+}
+
+.expandable-modal img{
+    
+    display: block;
+    margin: auto;
+    max-width: 100%; 
+    /*width: auto;*/
 }

@@ -2,42 +2,50 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PastTense</title>
-    <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/jquery.gridster.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/0.4.5/sweetalert2.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
  <div id="toolbar">
-            <div class="toolbar-item" id="logo">
-                <img src="images/logo.jpg" />
-            </div>
-          
-            <div class="toolbar-item" id="messaging">	
-                <form action="">
-                    <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
-                    <br>
-                    <button>Send</button>
-                </form>
-            </div>
-                    
-            <div class="toolbar-item" id="options">
-            </div>
+    <div class="toolbar-item" id="logo">
 
-          
+    </div>
+    
+    <div class="toolbar-item" id="messaging">	
+        <div>
+            <form action="">
+                <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
+                <br>
+                <input type="text" placeholder="Phone number" id="phone">
+                <br>
+                <label for="enable_to">Sending it to someone else</label>
+                <input type="checkbox" name="enable_to" id="enable_to">
+                <br>
+                <label for="private">Make private</label>
+                <input type="checkbox" name="private" id="private">
+                <br>
+                <button>Send</button>
+            </form>
+        </div>
+    </div>
  </div>
     
     <div class="gridster">
         <ul id="messages">
-            <li class="message-card" data-row="1" data-col="1" data-sizex="2" data-sizey="1">Some</li>
-            <li class="message-card" data-row="1" data-col="1" data-sizex="2" data-sizey="1">Info</li>
-            <li class="message-card" data-row="1" data-col="1" data-sizex="2" data-sizey="1">Here</li>         
+            <li class="message-card" data-row="1" data-col="1" data-sizex="1" data-sizey="1">Some</li>
+            <li class="message-card" data-row="1" data-col="1" data-sizex="1" data-sizey="1">Info</li>
+            <li class="message-card" data-row="1" data-col="1" data-sizex="1" data-sizey="1">Here</li>         
         </ul>
     </div>
     
 	<script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/jquery.gridster.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/sweetalert2/0.4.5/sweetalert2.min.js"></script>    
     <script src="js/main.js"></script>
 </body>
 </html>
