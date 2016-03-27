@@ -4,7 +4,7 @@ var original_colors = [
     '#73EEDC', 
     '#3CF2AC', 
     '#A57FFF',
-    '#FFE66D',
+    '#90E0F3',
     '#FF82A9'
 ];
 
