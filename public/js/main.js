@@ -106,9 +106,10 @@ function setupGridster() {
     return gridster;
 }
 
-// function fixateTime(timeElement) {
-//     timeElement.
-// }
+function approximateTime(timeElement) {
+    var result = new Date(timeElement[0].value);
+    console.log(result.getTime()/1000);
+}
 
 $(function(){ //DOM Ready
 
@@ -123,8 +124,8 @@ $(function(){ //DOM Ready
     });
     
     getAllMessages(function(msgs) {
-        for (var msg in msgs) {
-            addToGrid(gridster, msgs[msg], pickRandomColor(colors));
+        for (var i = 0; i < msgs.length; i++) {
+            addToGrid(gridster, msgs[i], pickRandomColor(colors));
         }
     });
     
@@ -136,9 +137,17 @@ $(function(){ //DOM Ready
 
     $('form').submit(function() {
         if (!$("#msg-field").val().match(/^\s*$/)) {
+            
+            response = {
+                
+            } 
+            
             socket.emit('new msg', $('#msg-field').val());
+            console.log($('#msg-field').val());            
             $('#msg-field').val('');
         }
+        
+        approximateTime($('#time'));
         
         return false;
     });
