@@ -7,20 +7,21 @@ body{
     height: 10rem;
     display: flex;
     padding: 15px;
-    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item {
     
     max-height: 100%;
+    border-radius: 0.3rem;
     margin: 0 0.5rem;
     padding: 1.0rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item:first-of-type {
-    background: #000;
-    
+    background: #000;    
     margin-left: 0;
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item:last-of-type {
@@ -74,7 +75,8 @@ li.message-card {
     background-color: #FFF;
     list-style-type: none;
     box-shadow: 0.1rem 0.1rem 0.1rem #888888;
-    
+    border-radius: 0.3rem;   
+    text-align: center; 
 }
 
 li.message-card img {
@@ -83,15 +85,9 @@ li.message-card img {
     height: auto;
 }
 
-.expandable-modal .sweet-content {
-    
-    text-align: left;
-}
-
-.expandable-modal img{
+.expandable-modal img {
     
     display: block;
     margin: auto;
     max-width: 100%; 
-    /*width: auto;*/
 }

@@ -58,6 +58,12 @@ function getAllMessages(callback){
 	$.get("/start", callback);
 }
 
+function switchWidgets(gridster, shift) {
+    console.log(gridster);
+    
+    console.log(gridster.serialize());
+}
+
 function addToGrid(gridster, msg, color) {
     var item = $('<li>').addClass('message-card').css('background-color', color).html(urlify(msg));
         
@@ -79,21 +85,18 @@ function pickRandomColor(colors) {
 
 function setupGridster() {
     var toolbarWidth = $('#toolbar').width();
-    
-    console.log(toolbarWidth);
-    
+        
     var widgetWidth = toolbarWidth/4 - 10;
     var maxCols = 4;
-    
-    console.log(window.innerWidth);
-    
+        
     if (window.innerWidth <= 460) {
         
         widgetWidth = toolbarWidth;
         maxCols = 1;
     }
 
-    widgetWidth -= parseInt($('.message-card').css('padding'))*2;
+    // widgetWidth -= parseInt($('.message-card').css('padding'))*2;
+    console.log($('.message-card'));
     
     var gridster = $(".gridster ul").gridster({
         widget_margins: [15, 15],
@@ -118,12 +121,30 @@ $(function(){ //DOM Ready
     
     var gridster = setupGridster();
     
-    socket.on('new msg', function(msg) {
+    socket.on('message-create-success', function(msg) {
         
         addToGrid(gridster, msg, pickRandomColor(colors));
+        swal({
+           title: 'Done',
+            text: "See you in the future!",
+            type: 'success',
+            confirmButtonText: 'Okie'
+       }); 
+    });
+    
+    socket.on('message-create-fail', function(msg) {
+       
+       swal({
+           title: 'Oops!',
+            text: "There was an error. Please try again later!",
+            type: 'error',
+            confirmButtonText: 'Okie'
+       }); 
     });
     
     getAllMessages(function(msgs) {
+        // gridster.remove_widget($('#dummy-card'));
+        
         for (var i = 0; i < msgs.length; i++) {
             addToGrid(gridster, msgs[i], pickRandomColor(colors));
         }
@@ -143,14 +164,17 @@ $(function(){ //DOM Ready
             } 
             
             socket.emit('new msg', $('#msg-field').val());
-            console.log($('#msg-field').val());            
             $('#msg-field').val('');
         }
+        
+        switchWidgets(gridster);
         
         getTimeStamp($('#time'));
         
         return false;
     });
     
-    setClickListener($('.message-card'));
+    
+    
+    // setClickListener($('.message-card'));
 });
