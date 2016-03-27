@@ -96,13 +96,15 @@ function pickRandomColor(colors) {
 function setupGridster() {
     var toolbarWidth = $('#toolbar').width();
         
-    var widgetWidth = toolbarWidth/4 - 10;
+    // var widgetWidth = toolbarWidth/4 - 10;
+    var widgetWidth = 390;
     var maxCols = 4;
         
     if (window.innerWidth <= 460) {
         
         widgetWidth = toolbarWidth;
         maxCols = 1;
+        $('#messages').css('margin-left', '0');
     }
 
     widgetWidth -= 16;
@@ -114,7 +116,7 @@ function setupGridster() {
     }).data('gridster');
     
     gridster.disable();
-    
+        
     return gridster;
 }
 
@@ -276,4 +278,6 @@ $(function(){ //DOM Ready
 	socket.on("forward-fail", function(err){
 		// error
 	})
+    
+    console.log($('li.message-card'));   
 });
