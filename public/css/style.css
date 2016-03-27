@@ -97,18 +97,19 @@ header h1 {
     
     width: 100%;
     padding: auto 0;
+    margin-bottom: 1.5rem;
 }
 
 li.message-card {
     
     padding: 0.5rem;
     overflow: hidden;
-    background-color: #FFF;
+    /*background-color: #FFF;*/
     list-style-type: none;
     box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;
     box-shadow: 0.1rem 0.1rem 0.1rem #888888;
     border-radius: 0.2rem;   
-    text-align: center; 
+    /*text-align: center; */
     font-size: 1rem;
 }
 

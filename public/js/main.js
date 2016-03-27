@@ -139,32 +139,42 @@ function setEnableToListener() {
     });
 }
 
-function setPrivateListener(isPrivate) {
+var privateFlag = false;
+
+function setPrivateListener() {
     var button = $('#private');
-    button.attr('checked', false);            
-        console.log(button.is(":checked"));
 
     button.click(function() {
         
-        if (button.is(":checked")) {
+        if (privateFlag) {
             
-            button.attr('checked', false);            
-            button.css('background-color', '#000');
-            button.css('color', '#FFF');
+            privateFlag = false;    
+            button.css('background-color', '#FFF');
+            button.css('color', '#000');
         } else {
             
-            button.attr('checked', true);
-            button.css('background-color', '#FFF')
-            button.css('color', '#000')
+            privateFlag = true;
+            button.css('background-color', '#000')
+            button.css('color', '#FFF')
         }
+        
+        console.log(privateFlag);
     });
 }
+
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
 
 function setDatetimeToToday(datetime) {
     var now = new Date(Date.now());
     var min = now.getMinutes();
     now.setMinutes(5 - min%5 + min);
-    datetime.val(now);
+    var result = now.toDateInputValue();
+    console.log(result);    
+    datetime.val(result);
 }
 
 function replenishColors() {
@@ -187,7 +197,6 @@ $(function(){ //DOM Ready
     var socket = io();
     
     var gridster = setupGridster();
-    // shiftGrid(gridster.$widgets);
     
     getAllMessages(function(msgs) {
         
@@ -208,13 +217,15 @@ $(function(){ //DOM Ready
         if (!$("#msg-field").val().match(/^\s*$/)) {
             
             var data = {
-                "private": $("#private").is(":checked"),
+                "private": privateFlag,
                 "toNumber": $("#to-phone").val(),
                 "fromNumber": $("#from-phone").val() || null,
                 "contentType": "text",
                 "content": $("#msg-field").val(),
                 "time": new Date($('#time').val()).getTime() / 1000
             };
+            
+            console.log(data);
             
             socket.emit('new msg', data);
         }
@@ -233,6 +244,9 @@ $(function(){ //DOM Ready
             title: 'Done',
             text: "See you in the future!",
             type: 'success',
+            customClass: 'expandable-modal',
+            width: window.innerWidth < 460 ? window.innerWidth * 0.85 : null,
+            padding: remToPixel(1),
             confirmButtonText: 'Okie'
         });
         
@@ -248,6 +262,9 @@ $(function(){ //DOM Ready
             title: 'Oops!',
             text: "There was an error. Please try again later!",
             type: 'error',
+            customClass: 'expandable-modal',
+            width: window.innerWidth < 460 ? window.innerWidth * 0.85 : null,
+            padding: remToPixel(1),
             confirmButtonText: 'Okie'
        }); 
     });
