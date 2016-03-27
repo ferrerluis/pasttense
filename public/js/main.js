@@ -1,14 +1,13 @@
 var original_colors = [
     '#F79F79', 
     '#F7D08A', 
-    '#E3F09B', 
-    '#419D78',
-    '#419D78', 
-    '#4E598C',
+    '#73EEDC', 
+    '#3CF2AC', 
+    '#A57FFF',
     '#FF8C42',
-    '#5B5941',
+    '#FFE66D',
     '#70A9A1',
-    '#C6878F'
+    '#FF82A9'
 ];
 
 function urlify(text) {
