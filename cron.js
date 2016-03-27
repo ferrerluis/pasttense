@@ -10,9 +10,8 @@ var twilio = require('twilio')(accountSid, authToken);
 
 new CronJob('* 5 * * * *', function() {
 db.serialize(function() {
-	db.each("SELECT toNumber,content, destinationTime FROM messages", function(err, row) {
+	db.each("SELECT fromNumber, toNumber,content, destinationTime FROM messages", function(err, row) {
 		if(paraseInt(row.destinationTime) === Date.now()){
-			// fs.appendFile('my_file.txt', 'data to append');
 			twilio.messages.create({
 				to:'+1' + row.toNumber,
 				from:'+14703090394',
@@ -22,6 +21,18 @@ db.serialize(function() {
 					console.log(error);
 				}
 			});
+		}
+		
+		if(paraseInt(row.destinationTime) === (Date.now() - 500)){
+			twilio.messages.create({
+				to:'+1' + row.fromNumber,
+				from:'+14703090394',
+				body:"Your message: "  + row.content + " will be sent in 5 minutes!" 
+			}, function(error, message) {
+				if (error) {
+					console.log(error);
+				}
+			});	
 		}
 	});
 });
