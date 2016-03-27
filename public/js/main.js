@@ -106,6 +106,10 @@ function setupGridster() {
     return gridster;
 }
 
+// function fixateTime(timeElement) {
+//     timeElement.
+// }
+
 $(function(){ //DOM Ready
 
     var colors = original_colors;
@@ -120,9 +124,7 @@ $(function(){ //DOM Ready
     
     getAllMessages(function(msgs) {
         for (var msg in msgs) {
-            setTimeout(function() {
-                addToGrid(gridster, msg, pickRandomColor(colors));                
-            }, 500);
+            addToGrid(gridster, msgs[msg], pickRandomColor(colors));
         }
     });
     
