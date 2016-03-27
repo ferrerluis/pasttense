@@ -6,5 +6,6 @@ create table messages(
 	likes int not null default 0,
 	contentType varchar(30) not null,
 	content text not null,
-	destinationTime integer
+	destinationTime integer,
+	sent boolean
 );

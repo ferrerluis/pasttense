@@ -65,6 +65,10 @@ function switchWidgets(gridster, shift) {
 }
 
 function addToGrid(gridster, msg, color) {
+	if (msg.length === 1) {
+		var msg = msg[0].content;
+	}
+	
     var item = $('<li>').addClass('message-card').css('background-color', color).html(urlify(msg));
         
     gridster.add_widget(item, 1, 1);
