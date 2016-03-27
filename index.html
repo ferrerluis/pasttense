@@ -19,19 +19,33 @@
         <div>
             <form action="">
                 <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
-                <br>
-                <input type="text" placeholder="Phone number" id="phone">
-                <br>
-                <label for="enable_to">Sending it to someone else</label>
-                <input type="checkbox" name="enable_to" id="enable_to">
-                <br>
-                <label for="private">Make private</label>
-                <input type="checkbox" name="private" id="private">
-                <br>
-                <input type="date" name="send-date" id="send-date">
-                <input type="time" name="send-time" id="send-time" step="300">
-                <br>
-                <button>Send</button>
+                <div class="options-group">
+                    <div class="options-col">
+                        <label for="to-phone">To-Phone </label>
+                        <input type="text" placeholder="(404)422-6437" id="to-phone">
+                    </div>                    
+                    <div class="options-col">
+                        <label class="from" style="visibility: hidden;" for="from-phone">From-Phone </label>
+                        <input class="from" style="visibility: hidden;" type="text" placeholder="(404)422-6437" id="from-phone">
+                    </div>
+                </div>
+                <div class="options-group">
+                    <div class="options-col">
+                        <label for="enable_to">Send to someone else </label>
+                        <input type="checkbox" name="enable_to" id="enable_to">
+                    </div>
+                    <div class="options-col">
+                        <label for="private">Make private </label>
+                        <input type="checkbox" name="private" id="private">
+                    </div>
+                </div>
+                <div class="options-group">
+                    <div class="options-col">                
+                        <label for="time">Time </label>
+                        <input type="datetime-local" name="time" id="time" step="300">
+                    </div>
+                </div>
+                <button id="send">Send</button>
             </form>
         </div>
     </div>
@@ -39,10 +53,8 @@
     
     <div class="gridster">
         <ul id="messages">
-            <li class="message-card" data-row="1" data-col="1" data-sizex="1" data-sizey="1">Some</li>       
         </ul>
     </div>
-    
 	<script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/jquery.gridster.min.js"></script>

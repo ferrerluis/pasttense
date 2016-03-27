@@ -49,13 +49,20 @@ function setClickListener(selector) {
             html: content,
             customClass: 'expandable-modal',
             width: window.innerWidth < 460 ? window.innerWidth * 0.85 : null,
-            padding: remToPixel(1)
+            padding: remToPixel(1),
+            confirmButtonText: 'Okie'
         });
     });
 }
 
 function getAllMessages(callback){
 	$.get("/start", callback);
+}
+
+function switchWidgets(gridster, shift) {
+    console.log(gridster);
+    
+    console.log(gridster.serialize());
 }
 
 function addToGrid(gridster, msg, color) {
@@ -79,21 +86,17 @@ function pickRandomColor(colors) {
 
 function setupGridster() {
     var toolbarWidth = $('#toolbar').width();
-    
-    console.log(toolbarWidth);
-    
+        
     var widgetWidth = toolbarWidth/4 - 10;
     var maxCols = 4;
-    
-    console.log(window.innerWidth);
-    
+        
     if (window.innerWidth <= 460) {
         
         widgetWidth = toolbarWidth;
         maxCols = 1;
     }
 
-    widgetWidth -= parseInt($('.message-card').css('padding'))*2;
+    widgetWidth -= 16;
     
     var gridster = $(".gridster ul").gridster({
         widget_margins: [15, 15],
@@ -106,9 +109,20 @@ function setupGridster() {
     return gridster;
 }
 
-// function fixateTime(timeElement) {
-//     timeElement.
-// }
+function setEnableToListener() {
+    $('#enable_to').click(function() {
+               
+        var from = $('.from');
+
+        if (from.css('visibility') === 'hidden') {
+            
+            from.css('visibility', 'visible');
+        } else {
+            
+            from.css('visibility', 'hidden');
+        }
+    });
+}
 
 $(function(){ //DOM Ready
 
@@ -117,14 +131,10 @@ $(function(){ //DOM Ready
     
     var gridster = setupGridster();
     
-    socket.on('new msg', function(msg) {
-        
-        addToGrid(gridster, msg, pickRandomColor(colors));
-    });
-    
     getAllMessages(function(msgs) {
-        for (var msg in msgs) {
-            addToGrid(gridster, msgs[msg], pickRandomColor(colors));
+        
+        for (var i = 0; i < msgs.length; i++) {
+            addToGrid(gridster, msgs[i], pickRandomColor(colors));
         }
     });
     
@@ -134,14 +144,71 @@ $(function(){ //DOM Ready
         }
     });
 
-    $('form').submit(function() {
+    $('form').submit(function(e) {
+		e.preventDefault();        
+        
         if (!$("#msg-field").val().match(/^\s*$/)) {
-            socket.emit('new msg', $('#msg-field').val());
-            $('#msg-field').val('');
+            
+            var data = {
+                "private": $("#private").is(":checked"),
+                "toNumber": $("#to-phone").val(),
+                "fromNumber": $("#from-phone").val() || null,
+                "contentType": "text",
+                "content": $("#msg-field").val(),
+                "time": new Date($('#time').val()).getTime() / 1000
+            };
+            
+            socket.emit('new msg', data);
         }
+        
+        // switchWidgets(gridster);
         
         return false;
     });
     
-    setClickListener($('.message-card'));
+	setEnableToListener();
+    
+    socket.on('message-create-success', function(msg) {
+        
+        console.log(msg);
+        addToGrid(gridster, msg, pickRandomColor(colors));
+        
+        swal({
+            title: 'Done',
+            text: "See you in the future!",
+            type: 'success',
+            confirmButtonText: 'Okie'
+        });
+        
+        $('#private').attr('checked', false);
+        $('#msg-field').val('');
+        $("#to-phone").val('');
+        $("#from-phone").val('');
+        $('#send-time').val('');
+    });
+    
+    socket.on('message-create-fail', function(msg) {
+       swal({
+            title: 'Oops!',
+            text: "There was an error. Please try again later!",
+            type: 'error',
+            confirmButtonText: 'Okie'
+       }); 
+    });
+    
+	socket.on("like-fail", function(error){
+		// do error stuff
+	});
+	
+	socket.on("like-success", function(messageId){
+		// update the UI
+	});
+	
+	socket.on("forward-success", function(msg){
+		// Update UI
+	});
+	
+	socket.on("forward-fail", function(err){
+		// error
+	})
 });

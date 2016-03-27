@@ -10,24 +10,26 @@ body{
 }
 
 #toolbar {
-    height: 10rem;
+    /*height: 10rem;*/
     display: flex;
     padding: 15px;
 }
 
 .toolbar-item {
     
-    max-height: 100%;
+    /*max-height: 100%;*/
+    text-align: center;
+    border-radius: 0.2rem;
     margin: 0 0.5rem;
     padding: 1.0rem;
-    
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 
 .toolbar-item:first-of-type {
-    background: #000;
-    
+    background: #000;    
     margin-left: 0;
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item:last-of-type {
@@ -85,6 +87,9 @@ li.message-card {
     background-color: #FFF;
     list-style-type: none;
     box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
+    border-radius: 0.2rem;   
+    text-align: center; 
 }
 
 li.message-card img {
@@ -93,15 +98,25 @@ li.message-card img {
     height: auto;
 }
 
-.expandable-modal .sweet-content {
+.expandable-modal, .expandable-modal button {
     
-    text-align: left;
+    border-radius: 0.2rem !important;    
 }
 
-.expandable-modal img{
+.expandable-modal img {
     
     display: block;
     margin: auto;
     max-width: 100%; 
-    /*width: auto;*/
+}
+
+.options-group {
+    
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+.options-col {
+    
+    flex-grow: 1;
 }
