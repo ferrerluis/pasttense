@@ -7,4 +7,5 @@ create table messages(
 	contentType varchar(30) not null,
 	content text not null,
 	destinationTime integer
+	reminded boolean
 );
