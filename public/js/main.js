@@ -1,10 +1,9 @@
 var original_colors = [
     '#F79F79', 
-    '#F7D08A', 
+    '#FFF272', 
     '#73EEDC', 
     '#3CF2AC', 
     '#A57FFF',
-    '#FF8C42',
     '#FFE66D',
     '#FF82A9'
 ];
