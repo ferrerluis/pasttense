@@ -110,6 +110,7 @@ app.get("/start", function(req, res) {
 		for(var i = 0; i < messages.length; i++){
 			m.push(messages[i].content);
 		}
+		
 		res.send(JSON.stringify(m));
 	});
 });
