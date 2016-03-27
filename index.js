@@ -55,8 +55,10 @@ app.get("/", function(req, res){
 				"content": msg.content,
 				"destinationTime": msg['time']
 			}], function(err, items) {
-				if(!err){
-					io.emit("message-create-success", items);	
+				if (!err) {
+					if (!msg.private) {
+						io.emit("message-create-success", items);
+					}
 				}else{
 					socket.emit("message-create-fail", err);
 				}
