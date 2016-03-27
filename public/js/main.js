@@ -51,7 +51,7 @@ function setClickListener(selector) {
             width: window.innerWidth < 460 ? window.innerWidth * 0.85 : null,
             padding: remToPixel(1)
         });
-    });
+    });	
 }
 
 function getAllMessages(callback){
@@ -153,4 +153,41 @@ $(function(){ //DOM Ready
     });
     
     setClickListener($('.message-card'));
+	
+	socket.on("message-create-fail", function(msg){
+		// respond to fail
+	});
+	
+	socket.on("message-create-success", function(msg){
+		// successfully created a message
+	});
+	
+	socket.on("like-fail", function(error){
+		// do error stuff
+	});
+	
+	socket.on("like-success", function(messageId){
+		// update the UI
+	});
+	
+	socket.on("forward-success", function(msg){
+		// Update UI
+	});
+	
+	socket.on("forward-fail", function(err){
+		// error
+	})
+	
+	$('#send').click(function(e){
+		e.preventDefault();
+		var data = {
+			"private": $("#private").is(":checked"),
+			"toNumber": $("#phone").val(),
+			"contentType": "text",
+			"content": $("#text").val(),
+			 "destinationTime": new Date($('#send-time').val()).getTime() / 1000 || 0
+		};
+		console.log(data);
+		socket.emit("new msg", data);	
+	});
 });
