@@ -1,14 +1,11 @@
 var original_colors = [
     '#F79F79', 
-    '#F7D08A', 
-    '#E3F09B', 
-    '#419D78',
-    '#419D78', 
-    '#4E598C',
-    '#FF8C42',
-    '#5B5941',
-    '#70A9A1',
-    '#C6878F'
+    '#FFF272', 
+    '#73EEDC', 
+    '#3CF2AC', 
+    '#A57FFF',
+    '#90E0F3',
+    '#FF82A9'
 ];
 
 function urlify(text) {
@@ -66,6 +63,10 @@ function switchWidgets(gridster, shift) {
 }
 
 function addToGrid(gridster, msg, color) {
+	if (msg.length === 1) {
+		var msg = msg[0].content;
+	}
+	
     var item = $('<li>').addClass('message-card').css('background-color', color).html(urlify(msg));
         
     gridster.add_widget(item, 1, 1);
