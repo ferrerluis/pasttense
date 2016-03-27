@@ -1,23 +1,21 @@
 @font-face {
-    font-family: "Quicksand-Light";
-    src: url("../fonts/Quicksand-Light.otf");
+    font-family: "Quicksand-Regular";
+    src: url("../fonts/Quicksand-Regular.otf");
 }
 
 body{
     background-color: #FFFFFF;
     color: #000;
-    font-family: Quicksand-Light;
+    font-family: Quicksand-Regular;
 }
 
 #toolbar {
-    /*height: 10rem;*/
     display: flex;
     padding: 15px;
 }
 
 .toolbar-item {
     
-    /*max-height: 100%;*/
     text-align: center;
     border-radius: 0.2rem;
     margin: 0 0.5rem;
@@ -25,11 +23,18 @@ body{
     box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
+.toolbar-item h3 {
+    
+    margin: 0 auto 0.5rem auto;
+}
+
+.toolbar-item>* {
+    
+    margin: 0.5rem 0;
+}
 
 .toolbar-item:first-of-type {
-    background: #000;    
     margin-left: 0;
-    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item:last-of-type {
@@ -41,6 +46,7 @@ body{
 }
 
 #logo {
+    background: #000;    
     flex-grow: 1;
     box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;    
 }
@@ -90,6 +96,7 @@ li.message-card {
     box-shadow: 0.1rem 0.1rem 0.1rem #888888;
     border-radius: 0.2rem;   
     text-align: center; 
+    font-size: 1rem;
 }
 
 li.message-card img {
@@ -111,12 +118,69 @@ li.message-card img {
 }
 
 .options-group {
-    
+
     display: flex;
-    margin: 0.5rem 0;
+    justify-content: space-between;
 }
 
 .options-col {
     
     flex-grow: 1;
+    max-width: 49%;
+}
+
+.option {
+    
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+#to-phone, #from-phone {
+    
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#time {
+    
+    margin: 0;
+    text-align: center;
+}
+
+textarea, input[type="text"], #time, button {
+    
+    font-family: Quicksand-Regular;
+    font-size: 1rem;
+}
+textarea, input[type="text"], #time {
+    
+    padding: 0.5rem;
+    background-color: #FFF;
+    border-radius: 0.2rem;
+    border: 0 solid #FFF;
+}
+
+.toggle-button, button {
+    
+    padding: 0.5rem 0.2rem;
+    font-weight: bolder;
+    background-color: #FFF;
+    border-radius: 0.2rem;
+    border: 0 solid #FFF;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.toggle-button:hover {
+    
+    background-color: #DDD;
+}
+
+form {
+    
+    width: 100%;
+    margin: 0;
 }

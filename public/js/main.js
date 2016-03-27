@@ -110,21 +110,59 @@ function setupGridster() {
 }
 
 function setEnableToListener() {
-    $('#enable_to').click(function() {
+    var button = $('#enable_to');
+    
+    button.click(function() {
                
         var from = $('.from');
 
         if (from.css('visibility') === 'hidden') {
             
             from.css('visibility', 'visible');
+            button.css('background-color', '#000');
+            button.css('color', '#FFF');
         } else {
             
             from.css('visibility', 'hidden');
+            button.css('background-color', '#FFF');
+            button.css('color', '#000');
         }
     });
 }
 
+function setPrivateListener(isPrivate) {
+    var button = $('#private');
+    button.attr('checked', false);            
+        console.log(button.is(":checked"));
+
+    button.click(function() {
+        
+        if (button.is(":checked")) {
+            
+            button.attr('checked', false);            
+            button.css('background-color', '#000');
+            button.css('color', '#FFF');
+        } else {
+            
+            button.attr('checked', true);
+            button.css('background-color', '#FFF')
+            button.css('color', '#000')
+        }
+    });
+}
+
+function setDatetimeToToday(datetime) {
+    var now = new Date(Date.now());
+    var min = now.getMinutes();
+    now.setMinutes(5 - min%5 + min);
+    datetime.val(now);
+}
+
 $(function(){ //DOM Ready
+
+    setDatetimeToToday($('#time'));
+	setEnableToListener();
+    setPrivateListener();
 
     var colors = original_colors;
     var socket = io();
@@ -165,9 +203,7 @@ $(function(){ //DOM Ready
         
         return false;
     });
-    
-	setEnableToListener();
-    
+        
     socket.on('message-create-success', function(msg) {
         
         console.log(msg);
