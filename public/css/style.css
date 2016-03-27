@@ -1,6 +1,11 @@
 @font-face {
-    font-family: "Quicksand-Regular";
-    src: url("../fonts/Quicksand-Regular.otf");
+    font-family: "JosefinSans-Regular";
+    src: url("../fonts/JosefinSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "JosefinSans-Bold";
+    src: url("../fonts/JosefinSans-Bold.ttf");
 }
 
 @media (max-width: 460px) {        
@@ -14,7 +19,8 @@
 body{
     background-color: #FFFFFF;
     color: #000;
-    font-family: Quicksand-Regular;
+    font-family: JosefinSans-Regular;
+    font-size: 1.2rem;
 }
 
 header {
@@ -25,7 +31,13 @@ header {
 header h1 {
     
     margin-bottom: 0;
-    font-weight: bolder;
+    font-family: JosefinSans-Bold
+}
+
+header #logo {
+    
+    width: 4rem;
+    height: auto;
 }
 
 #toolbar {
@@ -59,11 +71,10 @@ header h1 {
 }
 
 .toolbar-item:last-of-type {
-    background: #FF6B6B;
     
+    background: #FF6B6B;
     margin-right: 0;
     box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;
-    
 }
 
 #logo {
@@ -104,13 +115,11 @@ li.message-card {
     
     padding: 0.5rem;
     overflow: hidden;
-    /*background-color: #FFF;*/
     list-style-type: none;
     box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;
     box-shadow: 0.1rem 0.1rem 0.1rem #888888;
     border-radius: 0.2rem;   
-    /*text-align: center; */
-    font-size: 1rem;
+    /*font-size: 1rem;*/
 }
 
 li.message-card img {
@@ -171,8 +180,8 @@ li.message-card img {
 
 textarea, input[type="text"], #time, button {
     
-    font-family: Quicksand-Regular;
-    font-size: 1rem;
+    font-family: JosefinSans-Regular;
+    font-size: 1.2rem;
 }
 textarea, input[type="text"], #time {
     
