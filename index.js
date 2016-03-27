@@ -34,16 +34,16 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
 	
 	io.on('connection', function(socket){
-		socket.on('new msg', function(msg){ 
-			if(!msg.hasOwnProperty("private") 
-			|| !msg.hasOwnProperty("toNumber") 
-			|| !msg.hasOwnProperty("contentType") 
-			|| !msg.hasOwnProperty("content")
-			|| !msg.hasOwnProperty("time")) {
+		socket.on('new msg', function(msg) {
+			console.log(msg);
+			if( !msg["toNumber"] 
+			|| !msg["contentType"] 
+			|| !msg["content"]
+			|| !msg["time"]){
 				// something went wrong
 				socket.emit("message-create-fail", {"error": "missing a field"});
 				return;
-			}
+			}	
 			
 			req.models.messages.create([{
 				"private": msg.private,
@@ -105,7 +105,7 @@ app.get("/", function(req, res){
 
 app.get("/start", function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	req.models.messages.find(function(err, messages) {
+	req.models.messages.find(null, 50, function(err, messages) {
 		var m = [];
 		for(var i = 0; i < messages.length; i++){
 			m.push(messages[i].content);
