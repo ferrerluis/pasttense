@@ -6,7 +6,6 @@ var original_colors = [
     '#A57FFF',
     '#FF8C42',
     '#FFE66D',
-    '#70A9A1',
     '#FF82A9'
 ];
 
