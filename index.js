@@ -137,5 +137,3 @@ app.get("/create", function(req, res) {
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
-app.listen(3000);
-console.log("Starting on port 3000");
