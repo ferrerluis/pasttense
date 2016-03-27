@@ -109,7 +109,7 @@ function setupGridster() {
     
     var gridster = $(".gridster ul").gridster({
         widget_margins: [15, 15],
-        widget_base_dimensions: [widgetWidth, 80],
+        widget_base_dimensions: [370, 80],
         max_cols: maxCols
     }).data('gridster');
     

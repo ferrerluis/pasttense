@@ -10,41 +10,43 @@
     <link rel="stylesheet" media="(max-width: 460px)" href="css/style.css" />
 </head>
 <body>
-<header>
-    <h1>PastTense</h1>
-</header>
- <div id="toolbar">
-    <div class="toolbar-item" id="messaging">	
-            <form action="">
-                <h3 class="option">Write yourself something nice (max. 140 char)</h3>
-                <textarea class="option" id="msg-field" placeholder="Hey oni-chan..." maxlength="140" name="msg-field"></textarea>
-                <div class="options-group option">
-                    <div class="options-col">
-                        <input type="text" placeholder="To-phone" maxlength="10" id="to-phone">               
-                    </div>
-                    <div class="options-col">
-                        <input class="from" style="visibility: hidden;" maxlength="10" type="text" placeholder="From-phone" id="from-phone">
-                    </div>
-                </div>
-                <div class="options-group option">
-                    <div class="options-col">
-                        <div class="toggle-button" id="enable_to">Send to someone else</div>
-                    </div>
-                    <div class="options-col">
-                        <div class="toggle-button" id="private">Make private</div>
-                    </div>
-                </div>
-                <input class="option" type="datetime-local" name="time" id="time" step="300">
-                <button class="option" id="send">Send</button>
-            </form>
-        </div>
-    </div>
- </div>
-    
-    <div class="gridster">
-        <ul id="messages">
-        </ul>
-    </div>
+	<div class="container">
+		<header>
+			<h1>PastTense</h1>
+		</header>
+		<div id="toolbar">
+			<div class="toolbar-item" id="messaging">	
+					<form action="">
+						<h3 class="option">Write yourself something nice (max. 140 char)</h3>
+						<textarea class="option" id="msg-field" placeholder="Hey oni-chan..." maxlength="140" name="msg-field"></textarea>
+						<div class="options-group option">
+							<div class="options-col">
+								<input type="text" placeholder="To-phone" maxlength="10" id="to-phone">               
+							</div>
+							<div class="options-col">
+								<input class="from" style="visibility: hidden;" maxlength="10" type="text" placeholder="From-phone" id="from-phone">
+							</div>
+						</div>
+						<div class="options-group option">
+							<div class="options-col">
+								<div class="toggle-button" id="enable_to">Send to someone else</div>
+							</div>
+							<div class="options-col">
+								<div class="toggle-button" id="private">Make private</div>
+							</div>
+						</div>
+						<input class="option" type="datetime-local" name="time" id="time" step="300">
+						<button class="option" id="send">Send</button>
+					</form>
+				</div>
+			</div>
+		</div>
+			
+			<div class="gridster">
+				<ul id="messages">
+				</ul>
+			</div>
+	</div>
 	<script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/jquery.gridster.min.js"></script>
