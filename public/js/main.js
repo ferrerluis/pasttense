@@ -162,19 +162,11 @@ function setPrivateListener() {
     });
 }
 
-Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
-
 function setDatetimeToToday(datetime) {
     var now = new Date(Date.now());
     var min = now.getMinutes();
     now.setMinutes(5 - min%5 + min);
-    var result = now.toDateInputValue();
-    console.log(result);    
-    datetime.val(result);
+    datetime.val(now);
 }
 
 function replenishColors() {
