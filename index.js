@@ -15,7 +15,8 @@ app.use(orm.express("sqlite://database.db", {
 			"likes": Number,
 			"contentType": String,
 			"content": String,
-			"destinationTime": Number
+			"destinationTime": Number,
+			"sent": Boolean
 		 }, {
 			 methods: {
 				 "get": function(){
