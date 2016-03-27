@@ -110,9 +110,19 @@ function setupGridster() {
     return gridster;
 }
 
-function getTimeStamp(timeElement) {
-    var result = new Date(timeElement[0].value);
-    return result.getTime()/1000;
+function setEnableToListener() {
+    $('#enable_to').click(function() {
+               
+        var from = $('.from');
+
+        if (from.css('visibility') === 'hidden') {
+            
+            from.css('visibility', 'visible');
+        } else {
+            
+            from.css('visibility', 'hidden');
+        }
+    });
 }
 
 $(function(){ //DOM Ready
@@ -121,27 +131,6 @@ $(function(){ //DOM Ready
     var socket = io();
     
     var gridster = setupGridster();
-    
-    socket.on('message-create-success', function(msg) {
-        
-        addToGrid(gridster, msg, pickRandomColor(colors));
-        swal({
-           title: 'Done',
-            text: "See you in the future!",
-            type: 'success',
-            confirmButtonText: 'Okie'
-       }); 
-    });
-    
-    socket.on('message-create-fail', function(msg) {
-       
-       swal({
-           title: 'Oops!',
-            text: "There was an error. Please try again later!",
-            type: 'error',
-            confirmButtonText: 'Okie'
-       }); 
-    });
     
     getAllMessages(function(msgs) {
         // gridster.remove_widget($('#dummy-card'));
@@ -157,36 +146,71 @@ $(function(){ //DOM Ready
         }
     });
 
-    $('form').submit(function() {
+    $('form').submit(function(e) {
+		e.preventDefault();        
+        
         if (!$("#msg-field").val().match(/^\s*$/)) {
             
-            response = {
-                
-            } 
+            var data = {
+                "private": $("#private").is(":checked"),
+                "toNumber": $("#to-phone").val(),
+                "fromNumber": $("#from-phone").val() || null,
+                "contentType": "text",
+                "content": $("#msg-field").val(),
+                "time": new Date($('#send-time').val()).getTime() / 1000 || 0
+            };
             
-            socket.emit('new msg', $('#msg-field').val());
-            $('#msg-field').val('');
+            socket.emit('new msg', data);
         }
         
         switchWidgets(gridster);
         
-        getTimeStamp($('#time'));
-        
         return false;
     });
     
-    $('#enable_to').click(function() {
-               
-        var from = $('.from');
-
-        if (from.css('visibility') === 'hidden') {
-            
-            from.css('visibility', 'visible');
-        } else {
-            
-            from.css('visibility', 'hidden');
-        }
+    // setClickListener($('.message-card'));
+	setEnableToListener();
+    
+    socket.on('message-create-success', function(msg) {
+        
+        addToGrid(gridster, msg, pickRandomColor(colors));
+        swal({
+            title: 'Done',
+            text: "See you in the future!",
+            type: 'success',
+            confirmButtonText: 'Okie'
+        });
+        
+        $('#private').attr('checked', false);
+        $('#msg-field').val('');
+        $("#to-phone").val('');
+        $("#from-phone").val('');
+        $('#send-time').val('');
     });
     
-    // setClickListener($('.message-card'));
+    socket.on('message-create-fail', function(msg) {
+       
+       swal({
+            title: 'Oops!',
+            text: "There was an error. Please try again later!",
+            type: 'error',
+            confirmButtonText: 'Okie'
+       }); 
+    });
+    
+	socket.on("like-fail", function(error){
+		// do error stuff
+	});
+	
+	socket.on("like-success", function(messageId){
+		// update the UI
+	});
+	
+	socket.on("forward-success", function(msg){
+		// Update UI
+	});
+	
+	socket.on("forward-fail", function(err){
+		// error
+	})
 });

@@ -18,7 +18,7 @@
     <div class="toolbar-item" id="messaging">	
         <div>
             <form action="">
-                <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
+                <textarea id="text" id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
                 <br>
                 <label for="phone">To-Phone </label>
                 <input type="text" placeholder="(404)422-6437" id="to-phone">
@@ -31,9 +31,10 @@
                 <label for="private">Make private </label>
                 <input type="checkbox" name="private" id="private">
                 <br>
+                
                 <input type="datetime-local" name="time" id="time" step="300">
                 <br>
-                <button>Send</button>
+                <button id="send">Send</button>
             </form>
         </div>
     </div>
@@ -43,7 +44,6 @@
         <ul id="messages">
         </ul>
     </div>
-    
 	<script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/jquery.gridster.min.js"></script>
