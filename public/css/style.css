@@ -17,6 +17,17 @@ body{
     font-family: Quicksand-Regular;
 }
 
+header {
+    
+    text-align: center;
+}
+
+header h1 {
+    
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
 #toolbar {
     display: flex;
     padding: 15px;
@@ -65,12 +76,6 @@ body{
     flex-grow: 2;
 }
 
-#messaging>div {
-    
-    margin: auto;
-    width: 95%;
-}
-
 #options {
     flex-grow: 1;
 }
@@ -78,9 +83,7 @@ body{
 #msg-field {
     
     display: block;
-    width: 100%;
-    height: 50%;
-    
+    width: 94%;
 }
 
 #messages {
@@ -149,13 +152,20 @@ li.message-card img {
     
     display: block;
     text-align: center;
-    width: 100%;
+    width: 89%;
 }
 
 #time {
     
     margin: 0;
     text-align: center;
+    width: 94%;
+}
+
+#private {
+    
+    height: 1.7rem;
+    padding-top: 1rem;
 }
 
 textarea, input[type="text"], #time, button {

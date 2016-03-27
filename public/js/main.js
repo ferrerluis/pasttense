@@ -62,6 +62,14 @@ function switchWidgets(gridster, shift) {
     console.log(gridster.serialize());
 }
 
+function shiftGrid(gridster, shift) {
+    console.log(gridster);
+    // for (var widget in gridster.$widgets) {
+        
+    //     widget
+    // }
+}
+
 function addToGrid(gridster, msg, color) {
 	if (msg.length === 1) {
 		var msg = msg[0].content;
@@ -169,6 +177,7 @@ $(function(){ //DOM Ready
     var socket = io();
     
     var gridster = setupGridster();
+    shiftGrid(gridster.$widgets);
     
     getAllMessages(function(msgs) {
         
