@@ -106,9 +106,9 @@ function setupGridster() {
     return gridster;
 }
 
-function approximateTime(timeElement) {
+function getTimeStamp(timeElement) {
     var result = new Date(timeElement[0].value);
-    console.log(result.getTime()/1000);
+    return result.getTime()/1000;
 }
 
 $(function(){ //DOM Ready
@@ -147,7 +147,7 @@ $(function(){ //DOM Ready
             $('#msg-field').val('');
         }
         
-        approximateTime($('#time'));
+        getTimeStamp($('#time'));
         
         return false;
     });
