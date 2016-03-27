@@ -62,13 +62,13 @@ function switchWidgets(gridster, shift) {
     console.log(gridster.serialize());
 }
 
-function shiftGrid(gridster, shift) {
-    console.log(gridster);
-    // for (var widget in gridster.$widgets) {
+// function shiftGrid(gridster, shift) {
+//     console.log(gridster);
+//     // for (var widget in gridster.$widgets) {
         
-    //     widget
-    // }
-}
+//     //     widget
+//     // }
+// }
 
 function addToGrid(gridster, msg, color) {
 	if (msg.length === 1) {
@@ -77,7 +77,7 @@ function addToGrid(gridster, msg, color) {
 	
     var item = $('<li>').addClass('message-card').css('background-color', color).html(urlify(msg));
         
-    gridster.add_widget(item, 1, 1);
+    gridster.add_widget(item, 1, 1, 1, 1);
     
     setClickListener(item);
 }
@@ -85,7 +85,7 @@ function addToGrid(gridster, msg, color) {
 function pickRandomColor(colors) {
     
     if (colors.length == 0) {
-        colors = original_colors;
+        colors = replenishColors();
     }
     
     var index = Math.floor(Math.random() * colors.length);
@@ -167,17 +167,27 @@ function setDatetimeToToday(datetime) {
     datetime.val(now);
 }
 
+function replenishColors() {
+    var colors = [];
+    for (var i = 0; i < original_colors.length; i++) {
+        
+        colors.push(original_colors[i]);
+    }
+    return colors;
+}
+
 $(function(){ //DOM Ready
 
     setDatetimeToToday($('#time'));
 	setEnableToListener();
     setPrivateListener();
 
-    var colors = original_colors;
+    var colors = replenishColors();
+    
     var socket = io();
     
     var gridster = setupGridster();
-    shiftGrid(gridster.$widgets);
+    // shiftGrid(gridster.$widgets);
     
     getAllMessages(function(msgs) {
         
