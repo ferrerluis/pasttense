@@ -155,7 +155,7 @@ $(function(){ //DOM Ready
                 "fromNumber": $("#from-phone").val() || null,
                 "contentType": "text",
                 "content": $("#msg-field").val(),
-                "time": new Date($('#send-time').val()).getTime() / 1000 || 0
+                "time": new Date($('#time').val()).getTime() / 1000
             };
             
             socket.emit('new msg', data);
@@ -188,7 +188,6 @@ $(function(){ //DOM Ready
     });
     
     socket.on('message-create-fail', function(msg) {
-       
        swal({
             title: 'Oops!',
             text: "There was an error. Please try again later!",
