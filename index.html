@@ -20,12 +20,15 @@
             <form action="">
                 <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
                 <br>
-                <input type="text" placeholder="Phone number" id="phone">
+                <label for="phone">To-Phone </label>
+                <input type="text" placeholder="(404)422-6437" id="to-phone">
+                <label class="from" style="visibility: hidden;" for="phone">From-Phone </label>
+                <input class="from" style="visibility: hidden;" type="text" placeholder="(404)422-6437" id="from-phone">
                 <br>
-                <label for="enable_to">Sending it to someone else</label>
+                <label for="enable_to">Sending it to someone else </label>
                 <input type="checkbox" name="enable_to" id="enable_to">
                 <br>
-                <label for="private">Make private</label>
+                <label for="private">Make private </label>
                 <input type="checkbox" name="private" id="private">
                 <br>
                 <input type="datetime-local" name="time" id="time" step="300">

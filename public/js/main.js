@@ -49,7 +49,8 @@ function setClickListener(selector) {
             html: content,
             customClass: 'expandable-modal',
             width: window.innerWidth < 460 ? window.innerWidth * 0.85 : null,
-            padding: remToPixel(1)
+            padding: remToPixel(1),
+            confirmButtonText: 'Okie'
         });
     });
 }
@@ -174,7 +175,18 @@ $(function(){ //DOM Ready
         return false;
     });
     
-    
+    $('#enable_to').click(function() {
+               
+        var from = $('.from');
+
+        if (from.css('visibility') === 'hidden') {
+            
+            from.css('visibility', 'visible');
+        } else {
+            
+            from.css('visibility', 'hidden');
+        }
+    });
     
     // setClickListener($('.message-card'));
 });
