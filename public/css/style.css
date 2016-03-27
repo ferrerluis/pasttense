@@ -13,7 +13,7 @@ body{
     /*height: 10rem;*/
     display: flex;
     padding: 15px;
-    -ms-flex-order: column
+
 }
 
 .toolbar-item {
@@ -29,10 +29,10 @@ body{
 
     @media (max-width: 460px) {        
         .toolbar {
-            padding: 50rem;
+            
+            padding: 1rem;
             box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;  
         }
-        
     }
     
 
