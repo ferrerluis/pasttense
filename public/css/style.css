@@ -1,6 +1,12 @@
+@font-face {
+    font-family: "Quicksand-Light";
+    src: url("../fonts/Quicksand-Light.otf");
+}
+
 body{
     background-color: #FFFFFF;
     color: #000;
+    font-family: Quicksand-Light;
 }
 
 #toolbar {
@@ -14,7 +20,9 @@ body{
     max-height: 100%;
     margin: 0 0.5rem;
     padding: 1.0rem;
+    
 }
+
 
 .toolbar-item:first-of-type {
     background: #000;
