@@ -18,20 +18,21 @@
     <div class="toolbar-item" id="messaging">	
         <div>
             <form action="">
-                <textarea id="text" id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
+                <textarea id="msg-field" placeholder="Max 140 char" maxlength="140"></textarea>
                 <br>
-                <label for="phone">To-Phone </label>
+                <label for="to-phone">To-Phone </label>
                 <input type="text" placeholder="(404)422-6437" id="to-phone">
-                <label class="from" style="visibility: hidden;" for="phone">From-Phone </label>
+                <label class="from" style="visibility: hidden;" for="from-phone">From-Phone </label>
                 <input class="from" style="visibility: hidden;" type="text" placeholder="(404)422-6437" id="from-phone">
                 <br>
-                <label for="enable_to">Sending it to someone else </label>
-                <input type="checkbox" name="enable_to" id="enable_to">
+                <div class="option-group">
+                    <label for="enable_to">Sending it to someone else </label>
+                    <input type="checkbox" name="enable_to" id="enable_to">
+                    <label for="private">Make private </label>
+                    <input type="checkbox" name="private" id="private">
+                </div>
                 <br>
-                <label for="private">Make private </label>
-                <input type="checkbox" name="private" id="private">
-                <br>
-                
+                <label for="time">Time </label>
                 <input type="datetime-local" name="time" id="time" step="300">
                 <br>
                 <button id="send">Send</button>
