@@ -121,7 +121,7 @@ function setupGridster() {
 }
 
 function setEnableToListener() {
-    var button = $('#enable_to');
+    var button = $('#enable-to');
     
     button.click(function() {
                

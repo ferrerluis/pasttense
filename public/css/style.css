@@ -178,10 +178,15 @@ li.message-card img {
     width: 94%;
 }
 
-#private, #enable-to {
+#private {
     
     min-height: 1.8rem;
     padding-top: 1rem;
+}
+
+#enable-to {
+    
+    min-height: 1.8rem;
 }
 
 textarea, input[type="text"], #time, button {
