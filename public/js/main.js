@@ -52,6 +52,20 @@ function setClickListener(selector) {
             padding: remToPixel(1)
         });
     });
+	
+	$('#send').click(function(e){
+		e.preventDefault();
+		var data = {
+			"private": $("#private").attr("checked");
+			"toNumber": $("#phone").val(),
+			"contentType": "text",
+			"content": $("#text").val(),
+			 "destinationTime": new Date($('#send-time').val()).time() / 1000;
+		};
+		
+		socket.emit("new msg", data);	
+	});
+	
 }
 
 function getAllMessages(callback){
