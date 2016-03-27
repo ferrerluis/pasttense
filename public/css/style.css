@@ -7,7 +7,6 @@ body{
     height: 10rem;
     display: flex;
     padding: 15px;
-    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item {
@@ -27,10 +26,13 @@ body{
     background: #FF6B6B;
     
     margin-right: 0;
+    box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;
+    
 }
 
 #logo {
     flex-grow: 1;
+    box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;    
 }
 
 #messaging {
@@ -52,6 +54,7 @@ body{
     display: block;
     width: 100%;
     height: 50%;
+    
 }
 
 #messages {
@@ -73,8 +76,7 @@ li.message-card {
     overflow: hidden;
     background-color: #FFF;
     list-style-type: none;
-    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
-    
+    box-shadow: 0.01rem 0.01rem 0.8rem 0.001rem #888888;
 }
 
 li.message-card img {
