@@ -96,8 +96,7 @@ function setupGridster() {
         maxCols = 1;
     }
 
-    // widgetWidth -= parseInt($('.message-card').css('padding'))*2;
-    console.log($('.message-card'));
+    widgetWidth -= 16;
     
     var gridster = $(".gridster ul").gridster({
         widget_margins: [15, 15],
@@ -133,7 +132,6 @@ $(function(){ //DOM Ready
     var gridster = setupGridster();
     
     getAllMessages(function(msgs) {
-        // gridster.remove_widget($('#dummy-card'));
         
         for (var i = 0; i < msgs.length; i++) {
             addToGrid(gridster, msgs[i], pickRandomColor(colors));
@@ -163,17 +161,18 @@ $(function(){ //DOM Ready
             socket.emit('new msg', data);
         }
         
-        switchWidgets(gridster);
+        // switchWidgets(gridster);
         
         return false;
     });
     
-    // setClickListener($('.message-card'));
 	setEnableToListener();
     
     socket.on('message-create-success', function(msg) {
         
+        console.log(msg);
         addToGrid(gridster, msg, pickRandomColor(colors));
+        
         swal({
             title: 'Done',
             text: "See you in the future!",
