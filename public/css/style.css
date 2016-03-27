@@ -7,7 +7,7 @@ body{
     height: 10rem;
     display: flex;
     padding: 15px;
-    box-shadow: 0.3rem 0.3rem 0.3rem #888888;
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
 }
 
 .toolbar-item {
@@ -73,6 +73,8 @@ li.message-card {
     overflow: hidden;
     background-color: #FFF;
     list-style-type: none;
+    box-shadow: 0.1rem 0.1rem 0.1rem #888888;
+    
 }
 
 li.message-card img {
