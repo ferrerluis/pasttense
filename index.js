@@ -55,7 +55,7 @@ app.get("/", function(req, res){
 				"destinationTime": msg['time']
 			}], function(err, items) {
 				if(!err){
-					socket.emit("message-create-success", items);	
+					io.emit("message-create-success", items);	
 				}else{
 					socket.emit("message-create-fail", err);
 				}
@@ -69,7 +69,7 @@ app.get("/", function(req, res){
 					if(err){
 						socket.emit("like-fail", err);
 					}else{
-						socket.emit("like-success", messageId);	
+						io.emit("like-success", messageId);	
 					}
 				});
 			});
